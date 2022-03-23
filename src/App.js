@@ -4,13 +4,14 @@ import MainNavigation from './shared/components/Navigation/MainNavigation'
 import Login from './pages/Registration/Login'
 import Signup from './pages/Registration/Signup'
 import ErrorPage from './pages/handler/ErrorPage'
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 import Product from './pages/Product/Product'
 import Categories from './pages/Categories/categories'
 
-=======
 import "bootstrap/dist/css/bootstrap.min.css";
->>>>>>> Stashed changes
+import Footer from './shared/components/UI/Footer'
+
+// >>>>>>> Stashed changes
 function App() {
   return (
     
@@ -26,6 +27,7 @@ function App() {
     <Route path="*" element={<ErrorPage />} />
     </Routes>
     </main>
+    <Footer />
     </BrowserRouter>
     
     
