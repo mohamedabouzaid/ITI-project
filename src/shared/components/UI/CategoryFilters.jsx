@@ -60,7 +60,8 @@ function classNames(...classes) {
 }
 
 
-const CategoryFilters = () => {
+const CategoryFilters = (props) => {
+  const {filter}=props
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     return (
         <div className="bg-white">
@@ -105,6 +106,7 @@ const CategoryFilters = () => {
                 {/* Filters */}
                 <form className="mt-4 border-t border-gray-200">
                   <h3 className="sr-only">Categories</h3>
+                  
                   <ul role="list" className="font-medium text-gray-900 px-2 py-3">
                     {subCategories.map((category) => (
                       <li key={category.name}>
@@ -290,7 +292,8 @@ const CategoryFilters = () => {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 lg:h-full" />
+                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 lg:h-full" >{filter}</div>
+                
                 {/* /End replace */}
               </div>
             </div>
