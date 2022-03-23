@@ -6,13 +6,12 @@ import Signup from './pages/Registration/Signup'
 import ErrorPage from './pages/handler/ErrorPage'
 import Product from './pages/Product/Product'
 import Categories from './pages/Categories/categories'
-import Slider from './shared/components/UI/Slider'
+
 function App() {
   return (
     
     <BrowserRouter>
     <MainNavigation />
-    < Slider/>
     <main>
     <Routes>
     <Route path="/" element={<Home />} />
