@@ -2,6 +2,9 @@ import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
 import {Link} from 'react-router-dom'
+
+
+const navLink="/category/"
 const navigation = {
     categories: [
       {
@@ -26,38 +29,38 @@ const navigation = {
             id: 'clothing',
             name: 'Clothing',
             items: [
-              { name: 'Tops', href: '#' },
-              { name: 'Dresses', href: '#' },
-              { name: 'Pants', href: '#' },
-              { name: 'Denim', href: '#' },
-              { name: 'Sweaters', href: '#' },
-              { name: 'T-Shirts', href: '#' },
-              { name: 'Jackets', href: '#' },
-              { name: 'Activewear', href: '#' },
-              { name: 'Browse All', href: '#' },
+              { name: 'Tops'},
+              { name: 'Dresses' },
+              { name: 'Pants'},
+              { name: 'Denim'},
+              { name: 'Sweaters'},
+              { name: 'T-Shirts' },
+              { name: 'Jackets' },
+              { name: 'Activewear'},
+              { name: 'Browse All' },
             ],
           },
           {
             id: 'accessories',
             name: 'Accessories',
             items: [
-              { name: 'Watches', href: '#' },
-              { name: 'Wallets', href: '#' },
-              { name: 'Bags', href: '#' },
-              { name: 'Sunglasses', href: '#' },
-              { name: 'Hats', href: '#' },
-              { name: 'Belts', href: '#' },
+              { name: 'Watches' },
+              { name: 'Wallets'},
+              { name: 'Bags' },
+              { name: 'Sunglasses' },
+              { name: 'Hats' },
+              { name: 'Belts'},
             ],
           },
           {
             id: 'brands',
             name: 'Brands',
             items: [
-              { name: 'Full Nelson', href: '#' },
-              { name: 'My Way', href: '#' },
-              { name: 'Re-Arranged', href: '#' },
-              { name: 'Counterfeit', href: '#' },
-              { name: 'Significant Other', href: '#' },
+              { name: 'Full Nelson' },
+              { name: 'My Way' },
+              { name: 'Re-Arranged' },
+              { name: 'Counterfeit' },
+              { name: 'Significant Other' },
             ],
           },
         ],
@@ -119,11 +122,11 @@ const navigation = {
         ],
       },
     ],
-    pages: [
+    pages: [/*
       { name: 'Company', href: '#' },
       { name: 'Stores', href: '#' },
      
-    ],
+  */ ],
   }
   
   function classNames(...classes) {
@@ -200,10 +203,10 @@ const navigation = {
                               <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
                                 <img src={item.imageSrc} alt={item.imageAlt} className="object-center object-cover" />
                               </div>
-                              <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                              <Link to={item.href} className="mt-6 block font-medium text-gray-900">
                                 <span className="absolute z-10 inset-0" aria-hidden="true" />
                                 {item.name}
-                              </a>
+                              </Link>
                               <p aria-hidden="true" className="mt-1">
                                 Shop now
                               </p>
@@ -222,9 +225,9 @@ const navigation = {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a href={item.href} className="-m-2 p-2 block text-gray-500">
+                                  <Link to={navLink+item.name} className="-m-2 p-2 block text-gray-500">
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -238,23 +241,23 @@ const navigation = {
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a href={page.href} className="-m-2 p-2 block font-medium text-gray-900">
+                      <Link to={page.href} className="-m-2 p-2 block font-medium text-gray-900">
                         {page.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
   
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   <div className="flow-root">
-                    <a href="#" className="-m-2 p-2 block font-medium text-gray-900">
+                    <Link to="#" className="-m-2 p-2 block font-medium text-gray-900">
                       Sign in
-                    </a>
+                    </Link>
                   </div>
                   <div className="flow-root">
-                    <a href="#" className="-m-2 p-2 block font-medium text-gray-900">
+                    <Link  to="#" className="-m-2 p-2 block font-medium text-gray-900">
                       Create account
-                    </a>
+                    </Link>
                   </div>
                 </div>
   
@@ -274,7 +277,7 @@ const navigation = {
           </Dialog>
         </Transition.Root>
   
-        <header className="relative bg-white">
+        <header className="relative  top-0 bg-white z-50">
           <p className="bg-indigo-600 h-10 flex items-center justify-center text-sm font-medium text-white px-4 sm:px-6 lg:px-8">
             Get free delivery on orders over $100
           </p>
@@ -293,14 +296,14 @@ const navigation = {
   
                 {/* Logo */}
                 <div className="ml-4 flex lg:ml-0">
-                  <a href="#">
+                  <Link  to="/">
                     <span className="sr-only">Workflow</span>
                     <img
                       className="h-8 w-auto"
                       src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                      alt=""
+                      alt="Logo"
                     />
-                  </a>
+                  </Link>
                 </div>
   
                 {/* Flyout menus */}
@@ -349,10 +352,10 @@ const navigation = {
                                                 className="object-center object-cover"
                                               />
                                             </div>
-                                            <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                                            <Link to={item.href} className="mt-6 block font-medium text-gray-900">
                                               <span className="absolute z-10 inset-0" aria-hidden="true" />
                                               {item.name}
-                                            </a>
+                                            </Link>
                                             <p aria-hidden="true" className="mt-1">
                                               Shop now
                                             </p>
@@ -372,9 +375,9 @@ const navigation = {
                                             >
                                               {section.items.map((item) => (
                                                 <li key={item.name} className="flex">
-                                                  <a href={item.href} className="hover:text-gray-800">
+                                                  <Link  to={navLink+item.name} className="hover:text-gray-800">
                                                     {item.name}
-                                                  </a>
+                                                  </Link>
                                                 </li>
                                               ))}
                                             </ul>
@@ -392,13 +395,13 @@ const navigation = {
                     ))}
   
                     {navigation.pages.map((page) => (
-                      <a
+                      <Link
                         key={page.name}
-                        href={page.href}
+                        to={page.href}
                         className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                       >
                         {page.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </Popover.Group>
@@ -409,7 +412,7 @@ const navigation = {
                       Sign in
                     </Link>
                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                    <Link to="signup" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                    <Link to="/signup" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                       Create account
                     </Link>
                   </div>
@@ -418,22 +421,22 @@ const navigation = {
   
                   {/* Search */}
                   <div className="flex lg:ml-6">
-                    <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                    <Link to="#" className="p-2 text-gray-400 hover:text-gray-500">
                       <span className="sr-only">Search</span>
                       <SearchIcon className="w-6 h-6" aria-hidden="true" />
-                    </a>
+                    </Link>
                   </div>
   
                   {/* Cart */}
                   <div className="ml-4 flow-root lg:ml-6">
-                    <a href="#" className="group -m-2 p-2 flex items-center">
+                    <Link to="#" className="group -m-2 p-2 flex items-center">
                       <ShoppingBagIcon
                         className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                       <span className="sr-only">items in cart, view bag</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -444,4 +447,4 @@ const navigation = {
       );
   };
   
-  export default StoreNavigation;
+export default StoreNavigation;
