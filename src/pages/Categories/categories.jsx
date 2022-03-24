@@ -9,8 +9,7 @@ const categories = () => {
    
     return (
         <>
-        <h1>{catName}</h1>
-       < CategoryFilters filter={ < ProList />} />
+       < CategoryFilters catName={catName} filter={ < ProList />} />
       
        
        </>

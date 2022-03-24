@@ -6,9 +6,9 @@ import Signup from './pages/Registration/Signup'
 import ErrorPage from './pages/handler/ErrorPage'
 import Product from './pages/Product/Product'
 import Categories from './pages/Categories/categories'
-//import "bootstrap/dist/css/bootstrap.min.css";
 
-import Footer from './shared/components/UI/Footer'
+
+import Footer from './shared/components/Footer/Footer'
 
 function App() {
   return (

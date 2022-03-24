@@ -1,5 +1,7 @@
 
 import React from 'react';
+
+const sectionName='Customers also purchased'
 const products = [
     {
       id: 1,
@@ -11,7 +13,7 @@ const products = [
       color: 'Black',
     },
     {
-        id: 1,
+        id: 2,
         name: 'Basic Tee',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
@@ -20,7 +22,7 @@ const products = [
         color: 'Black',
       },
       {
-        id: 1,
+        id: 3,
         name: 'Basic Tee',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
@@ -30,7 +32,7 @@ const products = [
       },
      
       {
-        id: 1,
+        id: 4,
         name: 'Basic Tee',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
@@ -45,7 +47,7 @@ const ProList = () => {
     return (
         <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl text-center font-extrabold tracking-tight text-gray-900">Customers also purchased</h2>
+          <h2 className="text-4xl text-center font-extrabold tracking-tight text-indigo-600">{sectionName}</h2>
   
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (

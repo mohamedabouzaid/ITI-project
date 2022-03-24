@@ -8,9 +8,7 @@ const Home = () => {
     return (
        
          <>
-       
-         
-
+         <Slider/>
          <Promo />
          <Category />
          <Products />

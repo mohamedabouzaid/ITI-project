@@ -224,7 +224,7 @@ const navigation = {
                               className="mt-6 flex flex-col space-y-6"
                             >
                               {section.items.map((item) => (
-                                <li key={item.name} className="flow-root">
+                                <li key={item.name} className="flow-root"  onClick={() =>{console.log('open');}}>
                                   <Link to={navLink+item.name} className="-m-2 p-2 block text-gray-500">
                                     {item.name}
                                   </Link>
@@ -374,11 +374,11 @@ const navigation = {
                                               className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                             >
                                               {section.items.map((item) => (
-                                                <li key={item.name} className="flex">
+                                                <Popover.Button key={item.name}  className="flex">
                                                   <Link  to={navLink+item.name} className="hover:text-gray-800">
                                                     {item.name}
                                                   </Link>
-                                                </li>
+                                                </Popover.Button>
                                               ))}
                                             </ul>
                                           </div>
