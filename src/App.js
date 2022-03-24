@@ -6,6 +6,7 @@ import Signup from './pages/Registration/Signup'
 import ErrorPage from './pages/handler/ErrorPage'
 import Product from './pages/Product/Product'
 import Categories from './pages/Categories/categories'
+import MainCategories from './pages/Categories/MainCategories'
 
 
 import Footer from './shared/components/Footer/Footer'
@@ -22,6 +23,7 @@ function App() {
     <Route path="/signup" element={<Signup />} />
     <Route path="/product/:productID" element={<Product />} />
     <Route path="/category/:catName" element={<Categories />} />
+    <Route path="/mainacategory/:mainCat" element={< MainCategories />} />
     <Route path="*" element={<ErrorPage />} />
     </Routes>
     </main>

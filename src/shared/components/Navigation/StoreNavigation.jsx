@@ -1,10 +1,12 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState,useEffect } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
 import {Link} from 'react-router-dom'
 
 
+
 const navLink="/category/"
+const mainLink="/mainacategory/"
 const navigation = {
     categories: [
       {
@@ -133,11 +135,19 @@ const navigation = {
     return classes.filter(Boolean).join(' ')
   }
 
-  
+ 
 
-  const StoreNavigation = () => {
+  const StoreNavigation = (props) => {
+    const{handleShoppingCart}=props
     const [open, setOpen] = useState(false)
+
+
+    
+    
       return (
+
+        <>
+      
         <div className="bg-white">
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
@@ -277,7 +287,7 @@ const navigation = {
           </Dialog>
         </Transition.Root>
   
-        <header className="relative  top-0 bg-white z-50">
+        <header className="relative  top-0 bg-white z-20">
           <p className="bg-indigo-600 h-10 flex items-center justify-center text-sm font-medium text-white px-4 sm:px-6 lg:px-8">
             Get free delivery on orders over $100
           </p>
@@ -365,9 +375,13 @@ const navigation = {
                                       <div className="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm">
                                         {category.sections.map((section) => (
                                           <div key={section.name}>
+                                            <Popover.Button>
+                                            <Link to={mainLink+section.name}>
                                             <p id={`${section.name}-heading`} className="font-medium text-gray-900">
                                               {section.name}
                                             </p>
+                                            </Link>
+                                            </Popover.Button>
                                             <ul
                                               role="list"
                                               aria-labelledby={`${section.name}-heading`}
@@ -421,22 +435,21 @@ const navigation = {
   
                   {/* Search */}
                   <div className="flex lg:ml-6">
-                    <Link to="#" className="p-2 text-gray-400 hover:text-gray-500">
+                    <button  className="p-2 text-gray-400 hover:text-gray-500">
                       <span className="sr-only">Search</span>
                       <SearchIcon className="w-6 h-6" aria-hidden="true" />
-                    </Link>
+                    </button>
                   </div>
   
                   {/* Cart */}
                   <div className="ml-4 flow-root lg:ml-6">
-                    <Link to="#" className="group -m-2 p-2 flex items-center">
+                    <button onClick={handleShoppingCart} className="group -m-2 p-2 flex items-center">
                       <ShoppingBagIcon
                         className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                      <span className="sr-only">items in cart, view bag</span>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -444,7 +457,7 @@ const navigation = {
           </nav>
         </header>
       </div>
-      );
+      </>);
   };
   
 export default StoreNavigation;

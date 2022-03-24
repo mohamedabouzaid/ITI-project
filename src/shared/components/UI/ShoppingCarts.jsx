@@ -25,16 +25,39 @@ const products = [
       imageAlt:
         'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
     },
+    {
+      id: 3,
+      name: 'Medium Stuff Satchel',
+      href: '#',
+      color: 'Blue',
+      price: '$32.00',
+      quantity: 1,
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+      imageAlt:
+        'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+    },
+    {
+      id: 4,
+      name: 'Medium Stuff Satchel',
+      href: '#',
+      color: 'Blue',
+      price: '$32.00',
+      quantity: 1,
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+      imageAlt:
+        'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+    },
     // More products...
   ]
 
 
-const ShoppingCarts = () => {
+const ShoppingCarts = (props) => {
     const [open, setOpen] = useState(true)
+  
     return (
         <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
-          <div className="absolute inset-0 overflow-hidden">
+        <Dialog as="div" className="fixed z-30 inset-0 overflow-hidden" onClose={setOpen}>
+          <div className="  relative z-30 inset-0 overflow-hidden">
             <Transition.Child
               as={Fragment}
               enter="ease-in-out duration-500"

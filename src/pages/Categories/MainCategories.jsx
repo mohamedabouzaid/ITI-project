@@ -1,10 +1,16 @@
 import React from 'react';
-
+import ProductList from '../../shared/components/UI/proList'
+import SubCategory from '../../shared/components/UI/subCategory'
+import {useParams} from 'react-router-dom'
 const MainCategories = () => {
+    const {mainCat}=useParams()
+    
     return (
-        <div>
-           Main Categories
-        </div>
+       <> 
+         
+          <SubCategory catName={mainCat} componants={<> <ProductList />  < ProductList /> < ProductList /></>} />
+         
+        </>
     );
 };
 
