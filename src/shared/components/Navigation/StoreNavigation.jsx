@@ -4,7 +4,7 @@ import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/o
 import {Link} from 'react-router-dom'
 
 
-
+const filter='/1'
 const navLink="/category/"
 const mainLink="/mainacategory/"
 const navigation = {
@@ -389,7 +389,7 @@ const navigation = {
                                             >
                                               {section.items.map((item) => (
                                                 <Popover.Button key={item.name}  className="flex">
-                                                  <Link  to={navLink+item.name} className="hover:text-gray-800">
+                                                  <Link  to={navLink+item.name+filter} className="hover:text-gray-800">
                                                     {item.name}
                                                   </Link>
                                                 </Popover.Button>

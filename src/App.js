@@ -22,7 +22,7 @@ function App() {
     <Route path="/login" element={<Login />} />
     <Route path="/signup" element={<Signup />} />
     <Route path="/product/:productID" element={<Product />} />
-    <Route path="/category/:catName" element={<Categories />} />
+    <Route path="/category/:catName/:filter" element={<Categories />} />
     <Route path="/mainacategory/:mainCat" element={< MainCategories />} />
     <Route path="*" element={<ErrorPage />} />
     </Routes>
