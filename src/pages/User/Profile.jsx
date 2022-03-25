@@ -1,11 +1,11 @@
 import React from 'react';
-
+import UserDetail from '../../shared/components/UserUI/ProfileDetails'
+import UserSections from '../../shared/components/UserUI/UserSections';
 const Profile = () => {
     return (
-        <div>
-            UserProfile
-        </div>
+      <UserSections componants={ <UserDetail/>} />
+    
     );
 };
 
-export default Profile;UserProfile
+export default Profile;

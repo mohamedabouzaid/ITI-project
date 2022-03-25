@@ -7,8 +7,8 @@ import ErrorPage from './pages/handler/ErrorPage'
 import Product from './pages/Product/Product'
 import Categories from './pages/Categories/categories'
 import MainCategories from './pages/Categories/MainCategories'
-
-
+import Profile from './pages/User/Profile'
+import Order from './pages/User/Order'
 import Footer from './shared/components/Footer/Footer'
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
     <Route path="/signup" element={<Signup />} />
+    <Route path="/user/:id" element={< Profile />} />
+    <Route path="/orders/:userID" element={<Order />} />
     <Route path="/product/:productID" element={<Product />} />
     <Route path="/category/:catName/:filter" element={<Categories />} />
     <Route path="/mainacategory/:mainCat" element={< MainCategories />} />
