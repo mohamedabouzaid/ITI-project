@@ -1,16 +1,19 @@
 import React from 'react';
 import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { Dialog, Disclosure, Menu, Transition,Tab } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { ChevronDownIcon, FilterIcon, MinusSmIcon, PlusSmIcon, ViewGridIcon } from '@heroicons/react/solid'
 import {Link} from 'react-router-dom'
-const catLink='/category/'
+import UserDetail from './ProfileDetails'
+import Orders from '../Orders/Order'
+import Payment from '../Payment/payment';
+import Reviews from './Reviews'
 const subCategories = [
   { name: 'My Profile' },
   { name: 'Orders' },
   { name: 'STORE CREDIT' },
   { name: 'Reviews' },
-  { name: 'Sing Out' },
+ 
 ]
 
 
@@ -69,7 +72,7 @@ const UserSections = (props) => {
         </Transition.Root>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
+          <div className="relative z-10 flex items-baseline justify-between pt-15 pb-6 border-b border-gray-200">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">User</h1>
 
             <div className="flex items-center">
@@ -101,15 +104,17 @@ const UserSections = (props) => {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
               {/* Filters */}
-             
+            
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
+                <Tab.Group>
+                <Tab.List  className=" text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
                   {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <Link to={ catLink+category.name}>{category.name}</Link>
-                    </li>
+                    <Tab key={category.name} className='flow-root' >
+                      {category.name}
+                    </Tab>
                   ))}
-                </ul>
+                  <button>Sing Out</button>
+                </Tab.List>
 
                
              
@@ -117,11 +122,25 @@ const UserSections = (props) => {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <div  >{componants}</div>
+                <Tab.Panels>
+              <Tab.Panel><UserDetail/></Tab.Panel>
+              <Tab.Panel>< Orders /></Tab.Panel>
+              <Tab.Panel><Payment/></Tab.Panel>
+              <Tab.Panel><Reviews /></Tab.Panel>
+              <Tab.Panel>Content 3</Tab.Panel>
+              </Tab.Panels>
+                
                 
                 {/* /End replace */}
               </div>
+           
+           
+              </Tab.Group>
             </div>
+
+           
+
+        
           </section>
         </main>
       </div>
