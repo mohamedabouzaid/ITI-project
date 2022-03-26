@@ -73,9 +73,9 @@ const Reviews = () => {
                     </h3>
                    
                   </div>
-                  <p className="mt-1 p-5 text-sm text-gray-500 text-right">{review.msg}</p>
+                  <p className="mt-1 p-5 text-sm text-gray-500 text-center">{review.msg}</p>
                   <div className="mt-6">
-                  <div className="flex ">
+                  <div className="flex items-center">
                     {[0, 1, 2, 3, 4].map((rating) => (
                       <StarIcon
                         key={rating}
