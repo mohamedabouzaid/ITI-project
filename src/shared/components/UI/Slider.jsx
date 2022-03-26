@@ -64,7 +64,7 @@ const Slider = () => {
     <div className="parentDiv h-[540px] bg-white flex items-center justify-between">
       {/* leftarrow div */}
       <div className={arrowStyle}>
-        <span class="material-icons" style={{ fontSize: "50px" }} onClick = {prevSlide}>
+        <span className="material-icons" style={{ fontSize: "50px" }} onClick = {prevSlide}>
           arrow_circle_left
         </span>{" "}
       </div>
@@ -94,6 +94,7 @@ const Slider = () => {
             </div>
           );
         }
+        return '';
       })}
       {/* rightarrow div */}
       <div className={arrowStyle}>

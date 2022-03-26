@@ -70,7 +70,7 @@ const ProDetails = () => {
         <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
-          <ol role="list" className="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
+          <ol className="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
             {product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
@@ -208,9 +208,9 @@ const ProDetails = () => {
               <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm text-gray-900 font-medium">Size</h3>
-                  <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                  {/* <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                     Size guide
-                  </a>
+                  </a> */}
                 </div>
 
                 <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
@@ -289,7 +289,7 @@ const ProDetails = () => {
               <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
 
               <div className="mt-4">
-                <ul role="list" className="pl-4 list-disc text-sm space-y-2">
+                <ul className="pl-4 list-disc text-sm space-y-2">
                   {product.highlights.map((highlight) => (
                     <li key={highlight} className="text-gray-400">
                       <span className="text-gray-600">{highlight}</span>

@@ -107,7 +107,7 @@ const CategoryFilters = (props) => {
                 <form className="mt-4 border-t border-gray-200">
                   <h3 className="sr-only">Categories</h3>
                   
-                  <ul role="list" className="font-medium text-gray-900 px-2 py-3">
+                  <ul className="font-medium text-gray-900 px-2 py-3">
                     {subCategories.map((category) => (
                       <li key={category.name}>
                         <a href={category.href} className="block px-2 py-3">
@@ -237,7 +237,7 @@ const CategoryFilters = (props) => {
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
+                <ul className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
                   {subCategories.map((category) => (
                     <li key={category.name}>
                       <a href={category.href}>{category.name}</a>

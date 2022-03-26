@@ -1,7 +1,8 @@
-import { Fragment, useState,useEffect } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Popover,Menu, Tab, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
-import {Link} from 'react-router-dom'
+import {Link,useLocation} from 'react-router-dom'
+import Authentication from '../../../auth/authentication'
 
 
 
@@ -141,10 +142,14 @@ const navigation = {
   const StoreNavigation = (props) => {
     const{handleShoppingCart}=props
     const [open, setOpen] = useState(false)
-
-
-    
-    
+    const Location = useLocation();
+    const [isAuthenticated, setAuthentication] = useState(Authentication.isAuthinticated())
+    const handleLogOut = ()=>{
+      Authentication.LogOut()
+    }
+    useEffect(() => {
+      setAuthentication(Authentication.isAuthinticated())
+    }, [Location])
       return (
 
         <>
@@ -230,7 +235,6 @@ const navigation = {
                               {section.name}
                             </p>
                             <ul
-                              role="list"
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                               className="mt-6 flex flex-col space-y-6"
                             >
@@ -273,7 +277,7 @@ const navigation = {
                 </div>
   
                 <div className="border-t border-gray-200 py-6 px-4">
-                  <a href="#" className="-m-2 p-2 flex items-center">
+                  {/* <a href="#" className="-m-2 p-2 flex items-center">
                     <img
                       src="https://tailwindui.com/img/flags/flag-canada.svg"
                       alt=""
@@ -281,7 +285,7 @@ const navigation = {
                     />
                     <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
                     <span className="sr-only">, change currency</span>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </Transition.Child>
@@ -384,7 +388,6 @@ const navigation = {
                                             </Link>
                                             </Popover.Button>
                                             <ul
-                                              role="list"
                                               aria-labelledby={`${section.name}-heading`}
                                               className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                             >
@@ -422,7 +425,7 @@ const navigation = {
                 </Popover.Group>
   
                 <div className="ml-auto flex items-center">
-                  <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  {!isAuthenticated?<div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                     <Link to="/login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                       Sign in
                     </Link>
@@ -430,10 +433,10 @@ const navigation = {
                     <Link to="/signup" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                       Create account
                     </Link>
-                  </div>
+                  </div>:''}
   
                  {/*profile*/}
-                 <Menu as="div" className="ml-3 relative">
+                 {isAuthenticated?<Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
@@ -477,16 +480,17 @@ const navigation = {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
+                            to="/login"
+                            onClick={handleLogOut}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
+                            Log Out
                           </Link>
                         )}
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu>:''}
 
 
 
