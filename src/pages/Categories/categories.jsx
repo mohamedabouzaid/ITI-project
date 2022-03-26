@@ -4,7 +4,7 @@ import ProList from '../../shared/components/UI/proList';
 import {useParams} from 'react-router-dom'
 import Paggation from '../../shared/components/UI/paggation';
 
-const categories = () => {
+const Categories = () => {
 
     const {catName, filter} =useParams()
    
@@ -17,4 +17,4 @@ const categories = () => {
     );
 };
 
-export default categories;
+export default Categories;

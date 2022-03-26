@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
-import {Link,useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const data={
     result:97
@@ -15,7 +15,7 @@ const Paggation = (props) => {
     if(+filter===1){
       pre=1
     }
- else if(filter==Arr.length){  
+ else if(filter===Arr.length){  
    nex=Arr.length;
  }
 
@@ -68,7 +68,7 @@ const Paggation = (props) => {
                     aria-current="page"
 
                     className={(
-                        item == filter
+                        item === filter
                           ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium'
                           : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium'
                       )}>

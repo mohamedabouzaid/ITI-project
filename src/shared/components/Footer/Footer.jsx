@@ -11,24 +11,24 @@ const Footer = () => {
             </h2>
             <ul className="text-gray-300">
               <li className="mb-4">
-                <a href="#" className=" hover:underline">
+                {/* <a href="#" className=" hover:underline">
                   About
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Careers
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Brand Center
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Blog
-                </a>
+                </a> */}
               </li>
             </ul>
           </div>
@@ -38,27 +38,27 @@ const Footer = () => {
             </h2>
             <ul className="text-gray-300">
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Discord Server
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Twitter
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Facebook
-                </a>
+                </a> */}
               </li>
-              <a href="#" className="hover:underline"></a>
+              {/* <a href="#" className="hover:underline"></a>
               <li className="mb-4">
                 <a href="#" className="hover:underline"></a>
                 <a href="#" className="hover:underline">
                   Contact Us
                 </a>
-               </li>
+               </li> */}
             </ul>
           </div>
           <div>
@@ -67,19 +67,19 @@ const Footer = () => {
             </h2>
             <ul className="text-gray-300">
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Privacy Policy
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Licensing
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Terms &amp; Conditions
-                </a>
+                </a> */}
               </li>
             </ul>
           </div>
@@ -89,24 +89,24 @@ const Footer = () => {
             </h2>
             <ul className="text-gray-300">
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   iOS
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Android
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   Windows
-                </a>
+                </a> */}
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                {/* <a href="#" className="hover:underline">
                   MacOS
-                </a>
+                </a> */}
               </li>
             </ul>
           </div>
@@ -117,7 +117,7 @@ const Footer = () => {
             Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white">
+            {/* <a href="#" className="text-gray-400 hover:text-white">
               <svg
                 className="w-5 h-5"
                 fill="currentColor"
@@ -182,7 +182,7 @@ const Footer = () => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-            </a>
+            </a> */}
           </div>
         </div>
       </footer>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Fragment, useState } from 'react'
+
 import { Dialog, Disclosure, Menu, Transition,Tab } from '@headlessui/react'
+
 import { XIcon } from '@heroicons/react/outline'
-import { ChevronDownIcon, FilterIcon, MinusSmIcon, PlusSmIcon, ViewGridIcon } from '@heroicons/react/solid'
+// import { ChevronDownIcon, FilterIcon, MinusSmIcon, PlusSmIcon, ViewGridIcon } from '@heroicons/react/solid'
 import {Link} from 'react-router-dom'
 import UserDetail from './ProfileDetails'
 import Orders from '../Orders/Order'
@@ -17,9 +19,9 @@ const subCategories = [
 ]
 
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ')
+// }
 
 const UserSections = (props) => {
     const {componants}=props
@@ -106,8 +108,12 @@ const UserSections = (props) => {
               {/* Filters */}
             
                 <h3 className="sr-only">Categories</h3>
+
                 <Tab.Group>
                 <Tab.List  className=" text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
+=======
+              
+
                   {subCategories.map((category) => (
                     <Tab key={category.name} className='flow-root' >
                       {category.name}
