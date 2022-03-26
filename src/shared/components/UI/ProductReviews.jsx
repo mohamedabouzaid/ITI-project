@@ -1,10 +1,5 @@
 
 import { StarIcon } from '@heroicons/react/solid'
-const proLink='/product/'
-const sectionName='Customers also purchased'
-
-
-
 const userReviews = [
     {
       id: 1,
