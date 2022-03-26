@@ -44,7 +44,7 @@ const ProfileDetails = () => {
                 alt=""
               />
               <Link to="" className="flex items-center">
-              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Edit</button> 
+              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600"> Change</button> 
               </Link>
             </dd>
           </div>
@@ -53,7 +53,7 @@ const ProfileDetails = () => {
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
               <span>{User.name}</span>
               <Link to="" className="flex items-center">
-              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Edit</button> 
+              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
               </Link>
             </dd>
             
@@ -63,7 +63,7 @@ const ProfileDetails = () => {
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
               <span>{User.address}</span>
               <Link to="" className="flex items-center">
-              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Edit</button> 
+              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
               </Link>
             </dd>
           </div>
@@ -72,7 +72,7 @@ const ProfileDetails = () => {
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
              <span>{User.email}</span>
              <Link to="" className="flex items-center">
-              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Edit</button> 
+              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
               </Link>
             </dd>
           </div>
