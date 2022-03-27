@@ -9,11 +9,11 @@ const getData = () => [
   {
     name: "Jane Cooper",
     email: "jane.cooper@example.com",
-    title: "Regional Paradigm Technician",
+    title: 123,
     department: "Optimization",
     status: "Active",
-    role: "Admin",
-    locate: "Locate1",
+    role: "Jumia express",
+    locate:2,
     posCoords: [260, 900],
     imgUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
@@ -34,7 +34,7 @@ const getData = () => [
     email: "esther.howard@example.com",
     title: "Forward Response Developer",
     department: "Directives",
-    status: "Active",
+    status: "delivery",
     role: "Member",
     locate: "Locate",
     imgUrl:
@@ -45,7 +45,7 @@ const getData = () => [
     email: "jenny.wilson@example.com",
     title: "Central Security Manager",
     department: "Program",
-    status: "Active",
+    status: "onway",
     role: "Member",
     locate: "Locate",
     imgUrl:
@@ -56,7 +56,7 @@ const getData = () => [
     email: "kristin.watson@example.com",
     title: "Lean Implementation Liaison",
     department: "Mobility",
-    status: "Active",
+    status: "cancel",
     role: "Admin",
     locate: "Locate",
     imgUrl:
@@ -83,15 +83,15 @@ const HistoryOrders = ( ) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: "Name",
+        Header: "Product Name",
         accessor: "name"
       },
       {
-        Header: "Title",
+        Header: "price",
         accessor: "title"
       },
       {
-        Header: "Locate",
+        Header: "Quantity",
         accessor: "locate",
         Cell: LocateCell,
         posAccessor: "posCoords"
@@ -102,7 +102,7 @@ const HistoryOrders = ( ) => {
         Cell: StatusPill
       },
       {
-        Header: "Role",
+        Header: "Delivery",
         accessor: "role",
         Filter: SelectColumnFilter,
         filter: "includes"
@@ -123,7 +123,7 @@ const HistoryOrders = ( ) => {
             </div>
             <div className="mt-4">
               <Table columns={columns} data={data} />
-              {/* <Table columns={columns} data={data} map={mapFly} /> */}
+             
             </div>
           </main>
         </div>

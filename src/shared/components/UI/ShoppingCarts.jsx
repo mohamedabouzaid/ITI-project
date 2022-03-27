@@ -1,5 +1,5 @@
-import React from 'react';
-import { Fragment, useState } from 'react'
+import {useCallback,useState,useEffect,Fragment} from 'react';
+
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 
@@ -52,7 +52,11 @@ const products = [
 
 
 const ShoppingCarts = (props) => {
-    const [open, setOpen] = useState(true)
+  const {intial,closeShoppingCart}=props
+
+    const [open, setOpen] = useState(intial)
+   //removed function 
+    const removeHandler=useCallback((product)=>{console.log(product);},[])
   
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -89,7 +93,7 @@ const ShoppingCarts = (props) => {
                           <button
                             type="button"
                             className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                            onClick={() => setOpen(false)}
+                            onClick={closeShoppingCart}
                           >
                             <span className="sr-only">Close panel</span>
                             <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -124,7 +128,7 @@ const ShoppingCarts = (props) => {
                                     <p className="text-gray-500">Qty {product.quantity}</p>
   
                                     <div className="flex">
-                                      <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                      <button onClick={()=>removeHandler(product)} type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
                                         Remove
                                       </button>
                                     </div>
@@ -144,12 +148,12 @@ const ShoppingCarts = (props) => {
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
-                        {/* <a
+                        { <a
                           href="#"
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
                           Checkout
-                        </a> */}
+                        </a> }
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
@@ -157,7 +161,7 @@ const ShoppingCarts = (props) => {
                           <button
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => setOpen(false)}
+                            onClick={closeShoppingCart}
                           >
                             Continue Shopping<span aria-hidden="true"> &rarr;</span>
                           </button>
