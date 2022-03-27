@@ -19,7 +19,7 @@ const Paggation = (props) => {
    nex=Arr.length;
  }
 
-   console.log(filter);
+
   
    const navLink=`/category/${catName}/`
     return (

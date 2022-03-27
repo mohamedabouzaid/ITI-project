@@ -10,13 +10,7 @@ const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ]
-const subCategories = [
-  { name: 'Totes', href: '#' },
-  { name: 'Backpacks', href: '#' },
-  { name: 'Travel Bags', href: '#' },
-  { name: 'Hip Bags', href: '#' },
-  { name: 'Laptop Sleeves', href: '#' },
-]
+
 const filters = [
   {
     id: 'color',
@@ -55,14 +49,47 @@ const filters = [
   },
 ]
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 
+
 const CategoryFilters = (props) => {
+  const [checked,filterValue]=useState([])
   const {filter,catName}=props
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+
+    const handleSubmit=(e)=>{
+      e.preventDefault()
+      console.log(checked);
+  }
+
+ 
+
+  const handleChange=(e)=> {
+ 
+   const value=e.target.value;
+   let newChecked=[...checked]
+
+   const conValue=checked.find((filter)=>filter===value)
+   if(!conValue){newChecked.push(value)}
+   else{   newChecked = arrayRemove(checked, value)         
+  }     
+  filterValue(newChecked)
+      
+ 
+  }
+
+
+  function arrayRemove(arr, value) { 
+    
+    return arr.filter(function(ele){ 
+        return ele != value; 
+    });
+}
+
     return (
         <div className="bg-white">
       <div>
@@ -107,16 +134,7 @@ const CategoryFilters = (props) => {
                 <form className="mt-4 border-t border-gray-200">
                   <h3 className="sr-only">Categories</h3>
                   
-                  <ul className="font-medium text-gray-900 px-2 py-3">
-                    {subCategories.map((category) => (
-                      <li key={category.name}>
-                        <a href={category.href} className="block px-2 py-3">
-                          {category.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-
+                 
                   {filters.map((section) => (
                     <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
                       {({ open }) => (
@@ -213,10 +231,7 @@ const CategoryFilters = (props) => {
                 </Transition>
               </Menu>
 
-              <button type="button" className="p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500">
-                <span className="sr-only">View grid</span>
-                <ViewGridIcon className="w-5 h-5" aria-hidden="true" />
-              </button>
+            
               <button
                 type="button"
                 className="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden"
@@ -235,16 +250,9 @@ const CategoryFilters = (props) => {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
               {/* Filters */}
-              <form className="hidden lg:block">
+              <form className="hidden lg:block" onSubmit={e=>handleSubmit(e)}>
                 <h3 className="sr-only">Categories</h3>
-                <ul className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
-
+                
                 {filters.map((section) => (
                   <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
                     {({ open }) => (
@@ -267,11 +275,15 @@ const CategoryFilters = (props) => {
                               <div key={option.value} className="flex items-center">
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
+
+                                  onChange={e => handleChange(e)}
+                                  
+                                  name={`${section.id}`}
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
                                   className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -287,6 +299,7 @@ const CategoryFilters = (props) => {
                     )}
                   </Disclosure>
                 ))}
+                <input type='submit'/>
               </form>
 
               {/* Product grid */}
