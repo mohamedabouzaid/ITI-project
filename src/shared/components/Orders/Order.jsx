@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
 import Reviews from '../UserUI/Reviews';
+import HistoryOrders from '../UserUI/HistoryOrders';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -82,7 +83,7 @@ const Order = () => {
             <Tab.Panels className="mt-2">
            
             <Tab.Panel>omway</Tab.Panel>
-            <Tab.Panel>history</Tab.Panel>
+            <Tab.Panel><HistoryOrders/></Tab.Panel>
             <Tab.Panel><Reviews/></Tab.Panel>
              
              

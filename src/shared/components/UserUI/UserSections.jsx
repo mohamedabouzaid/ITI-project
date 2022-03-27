@@ -111,7 +111,7 @@ const UserSections = (props) => {
 
                 <Tab.Group>
                 <Tab.List  className=" text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
-=======
+
               
 
                   {subCategories.map((category) => (

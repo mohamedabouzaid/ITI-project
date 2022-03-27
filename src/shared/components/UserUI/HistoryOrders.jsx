@@ -1,81 +1,136 @@
-import React from "react";
-import { PaperClipIcon } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
-const User = {
-  name: "mohamed Abouzaid",
-  address: "ismailia",
-  email: "mohamed@gmail.com",
-  money: 12.03,
-};
+import React, { useState } from "react";
+import Map from "./Table/Map";
+import Table, { SelectColumnFilter, StatusPill, LocateCell } from "./Table/Table";
 
-const HistoryOrders = () => {
-  
-        return (
-            <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-              <div className="px-4 py-5 sm:px-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  User Information
-                </h3>
-                <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                  Personal details.
-                </p>
-              </div>
-              <div className="border-t border-gray-200">
-                <dl>
-                  <div className="bg-white  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">image</dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
-                      {" "}
-                      <img
-                        className="h-16 w-16 rounded-full flex items-center"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <Link to="" className="flex items-center">
-                      <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600"> Change</button> 
-                      </Link>
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">Full name</dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
-                      <span>{User.name}</span>
-                      <Link to="" className="flex items-center">
-                      <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
-                      </Link>
-                    </dd>
-                    
-                  </div>
-                  <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">ADDRESS BOOK</dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
-                      <span>{User.address}</span>
-                      <Link to="" className="flex items-center">
-                      <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
-                      </Link>
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 selection:">
-                    <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
-                     <span>{User.email}</span>
-                     <Link to="" className="flex items-center">
-                      <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
-                      </Link>
-                    </dd>
-                  </div>
-                  <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">STORE CREDIT</dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
-                      <span>EGP{User.money}</span>
-                     
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          );
+import { MapProvider } from "./Table/Map-context";
+
+
+const getData = () => [
+  {
+    name: "Jane Cooper",
+    email: "jane.cooper@example.com",
+    title: "Regional Paradigm Technician",
+    department: "Optimization",
+    status: "Active",
+    role: "Admin",
+    locate: "Locate1",
+    posCoords: [260, 900],
+    imgUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+  },
+  {
+    name: "Cody Fisher",
+    email: "cody.fisher@example.com",
+    title: "Product Directives Officer",
+    department: "Intranet",
+    status: "Active",
+    role: "Owner",
+    locate: "Locate",
+    imgUrl:
+      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+  },
+  {
+    name: "Esther Howard",
+    email: "esther.howard@example.com",
+    title: "Forward Response Developer",
+    department: "Directives",
+    status: "Active",
+    role: "Member",
+    locate: "Locate",
+    imgUrl:
+      "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+  },
+  {
+    name: "Jenny Wilson",
+    email: "jenny.wilson@example.com",
+    title: "Central Security Manager",
+    department: "Program",
+    status: "Active",
+    role: "Member",
+    locate: "Locate",
+    imgUrl:
+      "https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+  },
+  {
+    name: "Kristin Watson",
+    email: "kristin.watson@example.com",
+    title: "Lean Implementation Liaison",
+    department: "Mobility",
+    status: "Active",
+    role: "Admin",
+    locate: "Locate",
+    imgUrl:
+      "https://images.unsplash.com/photo-1532417344469-368f9ae6d187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+  },
+  {
+    name: "Cameron Williamson",
+    email: "cameron.williamson@example.com",
+    title: "Internal Applications Engineer",
+    department: "Security",
+    status: "Active",
+    role: "Member",
+    locate: "Locate",
+    posCoords: [260, 900],
+    imgUrl:
+      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+  }
+];
+
+const HistoryOrders = ( ) => {
     
+  const [mapFly, setMapFly] = useState(null);
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Name",
+        accessor: "name"
+      },
+      {
+        Header: "Title",
+        accessor: "title"
+      },
+      {
+        Header: "Locate",
+        accessor: "locate",
+        Cell: LocateCell,
+        posAccessor: "posCoords"
+      },
+      {
+        Header: "Status",
+        accessor: "status",
+        Cell: StatusPill
+      },
+      {
+        Header: "Role",
+        accessor: "role",
+        Filter: SelectColumnFilter,
+        filter: "includes"
+      }
+    ],
+    []
+  );
+
+  const data = React.useMemo(() => getData(), []);
+
+  return (
+    <>
+      <div className="App" style={{ height: "100%" }}>
+        <div className="min-h-screen bg-gray-100 text-gray-900">
+          <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+            <div className="">
+              <h1 className="text-xl font-semibold">Find Transmitters</h1>
+            </div>
+            <div className="mt-4">
+              <Table columns={columns} data={data} />
+              {/* <Table columns={columns} data={data} map={mapFly} /> */}
+            </div>
+          </main>
+        </div>
+      </div>
+    </>
+  );
+  
 };
 
 export default HistoryOrders;
