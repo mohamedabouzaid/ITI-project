@@ -1,12 +1,6 @@
 import React from "react";
 // import { PaperClipIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
-const User = {
-  name: "mohamed Abouzaid",
-  address: "ismailia",
-  email: "mohamed@gmail.com",
-  money: 12.03,
-};
 
 
 
@@ -21,7 +15,17 @@ const User = {
 
 
 
-const ProfileDetails = () => {
+
+const ProfileDetails = (props) => {
+  const {user}=props
+  const User = {
+    name: user.name,
+    address: user.address||'NO ADDRESS ADD',
+    email: user.email,
+    phone:user.phones[0]||"NO PHONE ADD",
+    money: user.money||0.00,
+   
+  };
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
@@ -77,6 +81,15 @@ const ProfileDetails = () => {
             </dd>
           </div>
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Phone Number</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
+              <span>{User.phone}</span>
+              <Link to="" className="flex items-center">
+              <button type="button" className="flex-inline px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-neutral-600">Edit</button> 
+              </Link>
+            </dd>
+          </div>
+          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">STORE CREDIT</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
               <span>EGP{User.money}</span>
@@ -88,5 +101,7 @@ const ProfileDetails = () => {
     </div>
   );
 };
+
+
 
 export default ProfileDetails;

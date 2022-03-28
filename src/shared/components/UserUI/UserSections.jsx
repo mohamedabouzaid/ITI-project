@@ -24,7 +24,7 @@ const subCategories = [
 // }
 
 const UserSections = (props) => {
-    const {componants}=props
+    const {user}=props
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     return (
         <div className="bg-white">
@@ -129,7 +129,7 @@ const UserSections = (props) => {
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
                 <Tab.Panels>
-              <Tab.Panel><UserDetail/></Tab.Panel>
+              <Tab.Panel><UserDetail user={user} /></Tab.Panel>
               <Tab.Panel>< Orders /></Tab.Panel>
               <Tab.Panel><Payment/></Tab.Panel>
               <Tab.Panel><Reviews /></Tab.Panel>
