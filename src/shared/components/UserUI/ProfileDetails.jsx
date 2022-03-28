@@ -3,26 +3,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const ProfileDetails = (props) => {
   const {user}=props
+  console.log(user);
+  
   const User = {
     name: user.name,
-    address: user.address||'NO ADDRESS ADD',
+    address: user.address.city+","+user.address.street+","+user.address.suite,
     email: user.email,
-    phone:user.phones[0]||"NO PHONE ADD",
+    phone:user.phone,
     money: user.money||0.00,
    
   };
@@ -53,7 +42,7 @@ const ProfileDetails = (props) => {
             </dd>
           </div>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Full name</dt>
+            <dt className="text-sm font-medium text-gray-500">User Name</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 lg:flex lg:items-center lg:justify-between">
               <span>{User.name}</span>
               <Link to="" className="flex items-center">

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Fragment, useState } from 'react'
-
 import { Dialog, Disclosure, Menu, Transition,Tab } from '@headlessui/react'
-
 import { XIcon } from '@heroicons/react/outline'
 // import { ChevronDownIcon, FilterIcon, MinusSmIcon, PlusSmIcon, ViewGridIcon } from '@heroicons/react/solid'
 import {Link} from 'react-router-dom'
@@ -128,9 +126,9 @@ const UserSections = (props) => {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <Tab.Panels>
+               <Tab.Panels>
               <Tab.Panel><UserDetail user={user} /></Tab.Panel>
-              <Tab.Panel>< Orders /></Tab.Panel>
+              <Tab.Panel>< Orders user={user}  /></Tab.Panel>
               <Tab.Panel><Payment/></Tab.Panel>
               <Tab.Panel><Reviews /></Tab.Panel>
               <Tab.Panel>Content 3</Tab.Panel>
@@ -143,10 +141,6 @@ const UserSections = (props) => {
            
               </Tab.Group>
             </div>
-
-           
-
-        
           </section>
         </main>
       </div>

@@ -3,7 +3,7 @@ import { Dialog, Popover,Menu, Tab, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
 import {Link,useLocation} from 'react-router-dom'
 import Authentication from '../../../auth/authentication'
-
+import axios  from 'axios'
 
 
 const filter='/1'
@@ -11,12 +11,10 @@ const navLink="/category/"
 const mainLink="/mainacategory/"
 const navigation = {
     categories: [
-      
-     
-  
+         
       {
-        id: 'women',
-        name: 'Women',
+        id: 'Fashion',
+        name: 'Fashion',
         featured: [
           {
             name: 'New Arrivals',
@@ -32,49 +30,14 @@ const navigation = {
           },
         ],
         sections: [
-          {
-            id: 'clothing',
-            name: 'Clothing',
-            items: [
-              { name: 'Tops'},
-              { name: 'Dresses' },
-              { name: 'Pants'},
-              { name: 'Denim'},
-              { name: 'Sweaters'},
-              { name: 'T-Shirts' },
-              { name: 'Jackets' },
-              { name: 'Activewear'},
-              { name: 'Browse All' },
-            ],
-          },
-          {
-            id: 'accessories',
-            name: 'Accessories',
-            items: [
-              { name: 'Watches' },
-              { name: 'Wallets'},
-              { name: 'Bags' },
-              { name: 'Sunglasses' },
-              { name: 'Hats' },
-              { name: 'Belts'},
-            ],
-          },
-          {
-            id: 'brands',
-            name: 'Brands',
-            items: [
-              { name: 'Full Nelson' },
-              { name: 'My Way' },
-              { name: 'Re-Arranged' },
-              { name: 'Counterfeit' },
-              { name: 'Significant Other' },
-            ],
-          },
+         
+         
+          
         ],
       },
       {
-        id: 'men',
-        name: 'Men',
+        id: 'Phones&Tablets',
+        name: 'Phones & Tablets',
         featured: [
           {
             name: 'New Arrivals',
@@ -91,41 +54,30 @@ const navigation = {
           },
         ],
         sections: [
+          
+         
+        ],
+      },
+      {
+        id: 'Electronics',
+        name: 'Electronics',
+        featured: [
           {
-            id: 'clothing',
-            name: 'Clothing',
-            items: [
-              { name: 'Tops', href: '#' },
-              { name: 'Pants', href: '#' },
-              { name: 'Sweaters', href: '#' },
-              { name: 'T-Shirts', href: '#' },
-              { name: 'Jackets', href: '#' },
-              { name: 'Activewear', href: '#' },
-              { name: 'Browse All', href: '#' },
-            ],
+            name: 'New Arrivals',
+            href: '#',
+            imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+            imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
           },
           {
-            id: 'accessories',
-            name: 'Accessories',
-            items: [
-              { name: 'Watches', href: '#' },
-              { name: 'Wallets', href: '#' },
-              { name: 'Bags', href: '#' },
-              { name: 'Sunglasses', href: '#' },
-              { name: 'Hats', href: '#' },
-              { name: 'Belts', href: '#' },
-            ],
+            name: 'Artwork Tees',
+            href: '#',
+            imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+            imageAlt:
+              'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
           },
-          {
-            id: 'brands',
-            name: 'Brands',
-            items: [
-              { name: 'Re-Arranged', href: '#' },
-              { name: 'Counterfeit', href: '#' },
-              { name: 'Full Nelson', href: '#' },
-              { name: 'My Way', href: '#' },
-            ],
-          },
+        ],
+        sections: [
+        
         ],
       },
     ],
@@ -143,6 +95,69 @@ const navigation = {
  
 
   const StoreNavigation = (props) => {
+
+    useEffect(()=>{
+      axios.put('http://localhost:3000/category',{}, {
+          headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+      }).then((res) => {
+          const mainCategory=res.data.data.categories;
+         
+          for (let index = 0; index < mainCategory.length; index++) {
+            
+
+            if(mainCategory[index].mainCategory=='Fashion'){          
+              
+              let sub ={id:mainCategory[index]._id,
+                        name:mainCategory[index].name,
+                        items:[] 
+                      }
+                      axios.get(`http://localhost:3000/category/${sub.name}`).then(res => {
+                       let itm=res.data.data.category.subCategories;
+                       itm.map((i)=>sub.items.push(i))
+                       navigation.categories[0].sections.push(sub)
+                     })
+                        
+
+            }
+            else if(mainCategory[index].mainCategory=='Electronics'){
+              let sub ={id:mainCategory[index]._id,
+                name:mainCategory[index].name,
+                items:[] 
+              }
+              
+              axios.get(`http://localhost:3000/category/${sub.name}`).then(res => {
+               let itm=res.data.data.category.subCategories;
+               itm.map((i)=>sub.items.push(i))
+               navigation.categories[2].sections.push(sub)
+             })
+              
+            }
+            else
+            {
+              let sub ={id:mainCategory[index]._id,
+                name:mainCategory[index].name,
+                items:[] 
+              }
+          
+              axios.get(`http://localhost:3000/category/${sub.name}`).then(res => {
+               let itm=res.data.data.category.subCategories;
+               itm.map((i)=>sub.items.push(i))
+               navigation.categories[1].sections.push(sub)
+             })
+            
+            }
+            
+          }
+         
+      })
+     },[navigation])
+
+
+   
+
+
     const{handleShoppingCart}=props
 
     const [open, setOpen] = useState(false)
@@ -158,7 +173,7 @@ const navigation = {
 
         <>
       
-        <div className="bg-white">
+         <div className="bg-white">
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="fixed inset-0 flex z-40 lg:hidden" onClose={setOpen}>

@@ -34,7 +34,7 @@ function App() {
       <Route exact path='/orders/:userID' element={<LogInGuard />}>
         <Route path="/orders/:userID" element={< Profile />} />
       </Route>
-      <Route path="/product/:productID" element={<Product />} />
+      <Route path="/product/:productName" element={<Product />} />
       <Route path="/category/:catName/:filter" element={<Categories />} />
       <Route path="/mainacategory/:mainCat" element={< MainCategories />} />
       <Route path="*" element={<ErrorPage />} />
