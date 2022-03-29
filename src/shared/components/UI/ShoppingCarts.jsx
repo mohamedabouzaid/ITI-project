@@ -28,7 +28,7 @@ const ShoppingCarts = (props) => {
     //removed function 
     const removeHandler=useCallback((product)=>{
       console.log(product.productId._id);
-      axios.delete('http://localhost:3000/cart',{productId:product.productId._id    }, {
+      axios.patch('http://localhost:3000/cart',{productId:product.productId._id    }, {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -45,7 +45,7 @@ const ShoppingCarts = (props) => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
   }).then((res) => {
-    console.log(res.data.data.cart.items);
+   
     setProduct(res.data.data.cart.items);
   })
 },[])

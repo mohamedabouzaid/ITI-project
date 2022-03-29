@@ -20,7 +20,7 @@ const catLink='/category/'
 
 const CategoryFilters = (props) => {
   const {catName,componants,subCategories}=props
-  console.log(subCategories);
+ 
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     return (
         <div className="bg-white">

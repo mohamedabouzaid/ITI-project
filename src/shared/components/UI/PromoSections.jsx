@@ -14,7 +14,7 @@ const Promo={
   ]
 }
  
-const linkPath='#'
+const linkPath='/category/Dresses/1'
 
 
 const PromoSections = () => {

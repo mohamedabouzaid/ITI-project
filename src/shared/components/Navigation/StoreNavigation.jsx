@@ -155,6 +155,24 @@ const navigation = {
      },[navigation])
 
 
+ const [numCart,setNum]=useState(0)
+
+     useEffect(()=>{axios.get('http://localhost:3000/cart', {
+      headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+  }).then((res) => {
+    setNum(res.data.data.cart.items.length);
+    
+  })
+},[numCart])
+
+
+
+
+
+
+
    
 
 
@@ -550,7 +568,7 @@ const navigation = {
                         className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
                       />
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{numCart}</span>
                     </button>
                   </div>
                 </div>

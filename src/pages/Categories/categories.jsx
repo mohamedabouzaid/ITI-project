@@ -8,7 +8,7 @@ import axios from 'axios';
 const Categories = () => {
   const [products,setProduct]=useState(undefined)
 const {catName, filter} =useParams()
-  console.log(catName);
+ 
 
 useEffect(()=>{
     axios.get(`http://localhost:3000/subcategory/${catName}`, {
@@ -16,8 +16,11 @@ useEffect(()=>{
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     }).then((res) => {
-
-      setProduct ( res.data.data.products)
+           
+           const filtered = res.data.data.products.filter(ele=>{
+             return ele.isAccepted === true
+           })
+      setProduct ( filtered)
     
     })
    },[catName])
@@ -60,7 +63,7 @@ useEffect(()=>{
  
     return (
         <>
-      {products.length !==0 ?< CategoryFilters catName={catName} filter={<> 
+      {products.length !==0  ?< CategoryFilters catName={catName} filter={<> 
       < ProList products={products} />< Paggation catName={catName} filter=
       { filter}/></> } /> : <CategoryFilters  catName={catName} filter={<>'NO PRODUCT Found'</>} />}
       
