@@ -28,7 +28,7 @@ const ShoppingCarts = (props) => {
     //removed function 
     const removeHandler=useCallback((product)=>{
       console.log(product.productId._id);
-      axios.delete('http://localhost:3000/cart',{productId:product.productId._id}, {
+      axios.delete('http://localhost:3000/cart',{productId:product.productId._id    }, {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -37,7 +37,7 @@ const ShoppingCarts = (props) => {
       closeShoppingCart()
     })
     
-    },[])
+    },[closeShoppingCart])
 
     ///get data
     useEffect(()=>{axios.get('http://localhost:3000/cart', {
