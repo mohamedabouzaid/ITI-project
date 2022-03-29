@@ -8,7 +8,8 @@ function classNames(...classes) {
   }
 
 const Order = (props) => {
-  const {user}=props
+  const {user,orders}=props
+  
     let [categories] = useState({
         orders: [],
         Reviews: [],
@@ -37,7 +38,7 @@ const Order = (props) => {
             </Tab.List>
             <Tab.Panels className="mt-2">
            
-            <Tab.Panel><HistoryOrders/></Tab.Panel>
+            <Tab.Panel><HistoryOrders orders={orders} /></Tab.Panel>
             <Tab.Panel><Reviews/></Tab.Panel>
              
              

@@ -3,7 +3,7 @@ import { StarIcon } from '@heroicons/react/solid'
 import { RadioGroup } from '@headlessui/react'
 import ProductReviews from './ProductReviews'
 import axios from 'axios'
-import {useParams} from 'react-router-dom'
+import {useParams,Link} from 'react-router-dom'
 
 
 const reviews = { href: '#', average: 4, totalCount: 117 }
@@ -32,10 +32,10 @@ const [product,setProduct] =useState( undefined)
           name: p.name,
           price: p.price+"EGP",
           href: '#',
-          number:20,
+          number:p.stock,
           breadcrumbs: [
-            { id: 1, name: 'Men', href: '#' },
-            { id: 2, name: 'Clothing', href: '#' },
+            { id: 1, name: p.category.name, href:''+p.category.name },
+            { id: 2, name: p.subCategory.name, href:'/category/'+p.subCategory.name+'/1' },
           ],
           images: [
             {
@@ -55,31 +55,16 @@ const [product,setProduct] =useState( undefined)
               alt: 'Two each of gray, white, and black shirts laying flat.',
             },
           ],
-          colors: [
-            { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-            { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-            { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-          ],
-          sizes: [
-            { name: 'XXS', inStock: false },
-            { name: 'XS', inStock: true },
-            { name: 'S', inStock: true },
-            { name: 'M', inStock: false },
-            { name: 'L', inStock: false },
-            { name: 'XL', inStock: false },
-            { name: '2XL', inStock: false },
-            { name: '3XL', inStock: false },
-          ],
-          description:
-            'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
+          specs:p.specs,
+         
+          description:p.description,
           highlights: [
-            'Hand cut and sewn locally',
-            'Dyed with our proprietary colors',
-            'Pre-washed & pre-shrunk',
-            'Ultra-soft 100% cotton',
+            'Free Delivered',
+            'No Taxes',
+            'Made in Egypt',
           ],
           details:
-            'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
+          p.description+p.name,
         })
       })
      },[productName])
@@ -128,7 +113,40 @@ const [product,setProduct] =useState( undefined)
 
     if(product==undefined){
      
-      return(<>no found product</>)
+      return(<>
+      <div className='w-full h-96'>
+      <div className="flex justify-center items-center space-x-2">
+      <div className="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-600" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="
+          spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+            text-purple-500
+          " role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="
+          spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+            text-green-500
+          " role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-red-500" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="
+          spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+            text-yellow-500
+          " role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-300" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-gray-300" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div></div></>)
     }
   
   
@@ -140,9 +158,9 @@ const [product,setProduct] =useState( undefined)
               {product.breadcrumbs.map((breadcrumb) => (
                 <li key={breadcrumb.id}>
                   <div className="flex items-center">
-                    <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
+                    <Link to={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
                       {breadcrumb.name}
-                    </a>
+                    </Link>
                     <svg
                       width={16}
                       height={20}
@@ -234,100 +252,22 @@ const [product,setProduct] =useState( undefined)
               </div>
   
             
-                {/* Colors */}
-                <div>
-                  <h3 className="text-sm text-gray-900 font-medium">Color</h3>
+             
   
-                  <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
-                    <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
-                    <div className="flex items-center space-x-3">
-                      {product.colors.map((color) => (
-                        <RadioGroup.Option
-                          key={color.name}
-                          value={color}
-                          className={({ active, checked }) =>
-                            classNames(
-                              color.selectedClass,
-                              active && checked ? 'ring ring-offset-1' : '',
-                              !active && checked ? 'ring-2' : '',
-                              '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
-                            )
-                          }
-                        >
-                          <RadioGroup.Label as="p" className="sr-only">
-                            {color.name}
-                          </RadioGroup.Label>
-                          <span
-                            aria-hidden="true"
-                            className={classNames(
-                              color.class,
-                              'h-8 w-8 border border-black border-opacity-10 rounded-full'
-                            )}
-                          />
-                        </RadioGroup.Option>
-                      ))}
-                    </div>
-                  </RadioGroup>
-                </div>
-  
-                {/* Sizes */}
+                {/* specs */}
                 <div className="mt-10">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm text-gray-900 font-medium">Size</h3>
-                  
-                  </div>
-  
-                  <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
-                    <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
-                    <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                      {product.sizes.map((size) => (
-                        <RadioGroup.Option
-                          key={size.name}
-                          value={size}
-                          disabled={!size.inStock}
-                          className={({ active }) =>
-                            classNames(
-                              size.inStock
-                                ? 'bg-white shadow-sm text-gray-900 cursor-pointer'
-                                : 'bg-gray-50 text-gray-200 cursor-not-allowed',
-                              active ? 'ring-2 ring-indigo-500' : '',
-                              'group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6'
-                            )
-                          }
-                        >
-                          {({ active, checked }) => (
-                            <>
-                              <RadioGroup.Label as="p">{size.name}</RadioGroup.Label>
-                              {size.inStock ? (
-                                <div
-                                  className={classNames(
-                                    active ? 'border' : 'border-2',
-                                    checked ? 'border-indigo-500' : 'border-transparent',
-                                    'absolute -inset-px rounded-md pointer-events-none'
-                                  )}
-                                  aria-hidden="true"
-                                />
-                              ) : (
-                                <div
-                                  aria-hidden="true"
-                                  className="absolute -inset-px rounded-md border-2 border-gray-200 pointer-events-none"
-                                >
-                                  <svg
-                                    className="absolute inset-0 w-full h-full text-gray-200 stroke-2"
-                                    viewBox="0 0 100 100"
-                                    preserveAspectRatio="none"
-                                    stroke="currentColor"
-                                  >
-                                    <line x1={0} y1={100} x2={100} y2={0} vectorEffect="non-scaling-stroke" />
-                                  </svg>
-                                </div>
-                              )}
-                            </>
-                          )}
-                        </RadioGroup.Option>
-                      ))}
+                {product.specs.map((item)=>(
+                 
+                      <div key={item.value} className="flex items-center justify-between">
+                      <h3 className="text-sm text-gray-900 font-medium">{item.name}:<span className='p-2'>{item.value}</span></h3> 
                     </div>
-                  </RadioGroup>
+                           
+
+                    ))}
+             
+                
+  
+              
                 </div>
   
 

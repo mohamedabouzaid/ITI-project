@@ -4,7 +4,7 @@ import { XIcon } from '@heroicons/react/outline'
 // import { ChevronDownIcon, FilterIcon, MinusSmIcon, PlusSmIcon, ViewGridIcon } from '@heroicons/react/solid'
 import {Link} from 'react-router-dom'
 const catLink='/category/'
-const subCategories = [
+/*const subCategories = [
   { name: 'Totes' },
   { name: 'Backpacks' },
   { name: 'Travel Bags' },
@@ -15,11 +15,12 @@ const subCategories = [
 
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ')
-// }
+// }*/
 
 
 const CategoryFilters = (props) => {
-  const {catName,componants}=props
+  const {catName,componants,subCategories}=props
+  console.log(subCategories);
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     return (
         <div className="bg-white">
@@ -106,7 +107,7 @@ const CategoryFilters = (props) => {
                 <ul className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
                   {subCategories.map((category) => (
                     <li key={category.name}>
-                      <Link to={ catLink+category.name}>{category.name}</Link>
+                      <Link to={ catLink+category.name+"/1"}>{category.name}</Link>
                     </li>
                   ))}
                 </ul>

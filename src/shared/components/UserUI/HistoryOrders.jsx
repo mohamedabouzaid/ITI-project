@@ -5,7 +5,7 @@ import Table, { SelectColumnFilter, StatusPill, LocateCell } from "./Table/Table
 import { MapProvider } from "./Table/Map-context";
 
 
-const getData = () => [
+/*const getData = () => [
   {
     name: "Jane Cooper",
     email: "jane.cooper@example.com",
@@ -74,60 +74,45 @@ const getData = () => [
     imgUrl:
       "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
   }
-];
+];*/
 
-const HistoryOrders = ( ) => {
-    
-  const [mapFly, setMapFly] = useState(null);
+const HistoryOrders = (props) => {
+  const {orders}=props
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Product Name",
-        accessor: "name"
-      },
-      {
-        Header: "price",
-        accessor: "title"
-      },
-      {
-        Header: "Quantity",
-        accessor: "locate",
-        Cell: LocateCell,
-        posAccessor: "posCoords"
-      },
-      {
-        Header: "Status",
-        accessor: "status",
-        Cell: StatusPill
-      },
-      {
-        Header: "Delivery",
-        accessor: "role",
-        Filter: SelectColumnFilter,
-        filter: "includes"
-      }
-    ],
-    []
-  );
 
-  const data = React.useMemo(() => getData(), []);
+ 
 
+ 
   return (
     <>
-      <div className="App" style={{ height: "100%" }}>
-        <div className="min-h-screen bg-gray-100 text-gray-900">
-          <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-            <div className="">
-              <h1 className="text-xl font-semibold">Find Transmitters</h1>
-            </div>
-            <div className="mt-4">
-              <Table columns={columns} data={data} />
-             
-            </div>
-          </main>
-        </div>
-      </div>
+    <table className="min-w-full border-collapse block md:table">
+  <thead className="block md:table-header-group">
+    <tr className="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative">
+    <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Item Name</th>
+      <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Item Quantity</th>
+      <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">paymentMethod</th>
+      <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">shippingAddress</th>
+      <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Bill</th>
+    </tr>
+  </thead>
+  <tbody>
+    {orders.map((order)=>(
+      <>
+      
+      <tr key={order._id} >
+      <td>{order.orderItems.map((item)=>(<li key={item.productId.name}>{item.productId.name}</li>))}</td>
+      <td>{order.orderItems.map((item)=>(<li key={item._id}>{item.quantity}</li>))}</td>
+      <td>{order.paymentMethod}</td>
+      <td>{order.shippingAddress.city},{order.shippingAddress.street},{order.shippingAddress.suite}</td>
+      <td>{order.bill}</td>
+    </tr>
+    <br/>
+    </>
+    ))}
+    
+   
+  </tbody>
+</table>
     </>
   );
   

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProfileDetails = (props) => {
   const {user}=props
-  console.log(user);
+ 
   
   const User = {
     name: user.name,
